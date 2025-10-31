@@ -23,7 +23,7 @@ export default function Home() {
         `https://api.openrouteservice.org/geocode/autocomplete?api_key=${apiKey}&text=${encodeURIComponent(texto)}`
       );
       const datos = await respuesta.json();
-      const lugares = datos.features.map((feature: any) => feature.properties.label);
+      const lugares = datos.features.map((feature: { properties: { label: never; }; }) => feature.properties.label);
       setSugerencias(lugares);
     } catch (error) {
       console.error("Error al obtener sugerencias:", error);
